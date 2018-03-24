@@ -1,110 +1,101 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
-  </head>
-  <body {
-    class="bg-light"
-    background color:coral;
-    background-image: url("C:\Users\Dell\Desktop\bg.jpg");>
-    
-      
-    
+  <title>Hello, world!</title>
+</head>
 
+<body>    
   <!-- As a heading -->
-  <nav class="navbar navbar-dark bg-dark">
-    <span class="navbar-brand mb-0 h1">Agro-expert</span> 
+  <nav class="navbar bg-info py-3">
+    <h2 class="text-white"><strong>Agro</strong>Expert</h2> 
     <div id="google_translate_element"></div>
   </nav>
-  
-  
+
+  <div class="jumbotron jumbotron-fluid bg-info text-white">
+    <div class="container">
+      <h1 class="display-4">Your farm is a <span  
+        class="txt-rotate"
+        data-period="200"
+        data-rotate='[ "business."]'></span></h1>
+      <p class="lead">We help small scale farmers take business decisions customised to their needs, and help
+        them see their farm as a business!
+      </p>  
+          
       </div>
     </div>
-    
-    <div class="container"> 
-  <form>
-    
+  </div>
 
-      <div class="alert alert-success my-3 " role="alert">
-          <h4 class="alert-heading">STEP-1</h4>
-          <p>Please enter your land details for our evaluation.</p>
-          <hr>
-          <p class="mb-0"></p>
-        </div>    
-      <div class="form-group">
-        <label for="formGroupExampleInput">Enter your Pincode:</label>
-        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter input">
-      </div>
-      <div class="form-group">
-        <label for="formGroupExampleInput2">Area (in hectares):</label>
-        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Enter input">
-      </div>
-      <div class="form-group">
-          <label for="formGroupExampleInput">Capital in Rupees:</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter input">
+  <div class="container text-center">
+    <h2 class="py-3">Answer just 3 easy questions</h2>
+    <div class="row py-4">
+        <div class="col-sm-4">
+          <h3>Question 1</h3>
+          <h1 class="display-1 text-info"><i class="fas fa-map-marker-alt"></i></h1>
+          <p class="lead">Where do you live?</p>
         </div>
-        <input class="btn btn-dark" type="submit" value="Submit">
+
+        <div class="col-sm-4">
+            <h3>Question 2</h3>
+            <h1 class="display-1 text-info"><i class="fas fa-chart-area"></i></h1>
+            <p class="lead">How much land do you own?</p>
+        </div>
+
+        <div class="col-sm-4">
+            <h3>Question 3</h3>
+            <h1 class="display-1 text-info"><i class="fas fa-rupee-sign"></i></h1>
+            <p class="lead">How much investment can you make?</p>
+        </div>
+
+    </div>
+  </div>
+
+<div class="container w-50 mx-auto"> 
+  <form type="POST">
+
+      <div class="form-group">
+        <label for="pincode">Enter your State:</label>
+        <input type="text" name="pincode" pattern="[0-9]{6}" maxlength="6" class="form-control" id="pincode" placeholder="Enter pincode (Ex. 400088)">
+      </div>
+
+      <div class="form-group">
+        <label for="area">Area (in hectares):</label>
+        <input type="number" class="form-control" id="area" name="area" placeholder="Enter area Ex. 2">
+      </div>
+
+      <div class="form-group">
+          <label for="capital">Capital in Rupees:</label>
+          <input type="number" class="form-control" id="capital" placeholder="Enter capital">
+      </div>
+        
+    <input class="btn btn-info" type="submit" value="Submit">
     </form>
     </div>
 
-  
-      
+    <footer class="p-3 bg-dark text-white page-footer pt-4 mt-4">
 
-    
-        <div class="p-3 mb-2 bg-info text-white my-3">
-    <footer class="page-footer font-small blue pt-4 mt-4">
+      <!--Footer Links-->
+      <div class="container text-center">
 
-        <!--Footer Links-->
-        <div class="container-fluid text-center text-md-left">
-            <div class="row">
-    
-                <!--First column-->
-                <div class="col-md-12">
-                    <h5 class="text-center" >OUR TEAM</h5>
-                    <div class="container">
-                        <div class="row">
-                          <div class="col-sm">
-                            Kaushal Bhogale
-                          </div>
-                          <div class="col-sm">
-                            Asutosh Padhi
-                          </div>
-                          <div class="col-sm">
-                            Adheesh Juvekar
-                          </div>
-                          <div class="col-sm">
-                            Manali Jambavalikar
-                          </div>
-                        </div>
-                      </div>
-                </div>
-                </div>
-                <!--/.First column-->
-    
-                
-        </div>
+        <h5 class="text-center" >This application was developed by -</h5>
+                    Kaushal Bhogale , Asutosh Padhi , Adheesh Juvekar , Manali Jambavalikar
+      </div>            
+          
+      <!--Copyright-->
+      <div class="footer-copyright py-3 text-center">
+              © 2018 Copyright:
+              <a>  O(1/n) </a>
+      </div>
+          <!--/.Copyright-->
       
-        <!--/.Footer Links-->
-    
-        <!--Copyright-->
-        <div class="footer-copyright py-3 text-center">
-            © 2018 Copyright:
-            <a>  O(1/n) </a>
-        </div>
-        <!--/.Copyright-->
-    
     </footer>
-    <!--/.Footer-->
-    </div>
-                          
-
+                        
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript">
@@ -116,8 +107,64 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <div class="container">
-      <!-- Content here -->
-    </div>
-  }</body>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+    <script>
+        var TxtRotate = function(el, toRotate, period) {
+          this.toRotate = toRotate;
+          this.el = el;
+          this.loopNum = 0;
+          this.period = parseInt(period, 10) || 2000;
+          this.txt = '';
+          this.tick();
+          this.isDeleting = false;
+        };
+        
+        TxtRotate.prototype.tick = function() {
+          var i = this.loopNum % this.toRotate.length;
+          var fullTxt = this.toRotate[i];
+        
+          if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+          } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+          }
+        
+          this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+        
+          var that = this;
+          var delta = 300 - Math.random() * 100;
+        
+          if (this.isDeleting) { delta /= 2; }
+        
+          if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+          } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+          }
+        
+          setTimeout(function() {
+            that.tick();
+          }, delta);
+        };
+        
+        window.onload = function() {
+          var elements = document.getElementsByClassName('txt-rotate');
+          for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-rotate');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtRotate(elements[i], JSON.parse(toRotate), period);
+            }
+          }
+          // INJECT CSS
+          var css = document.createElement("style");
+          css.type = "text/css";
+          css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+          document.body.appendChild(css);
+        };
+    </script>
+     </body>
 </html>
