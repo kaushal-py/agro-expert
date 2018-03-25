@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from returnCrop import ReturnCrop
+import returnCrop
 app = Flask(__name__)
 
 @app.route("/")
@@ -11,7 +11,7 @@ def results():
     state = (request.args["state"])
     area = (request.args["area"])
     capital = (request.args["capital"])
-    crop,ans,crops_possible = ReturnCrop.returnCrop(state,area,capital)
+    (crop,ans,crops_possible) = returnCrop.returnCrop(state,area,capital)
     return render_template("result.html", crop=crop, ans=ans, area=area, crops_possible = crops_possible)
 
 if __name__ == "__main__":
