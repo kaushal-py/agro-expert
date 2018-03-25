@@ -23,8 +23,8 @@ class ReturnCrop:
         y = set(sheetnames)
         y = list(y)
 
-        items = np.zeros((len(y),10,11))
-
+        items = np.zeros((len(y),11,11))
+        possible_crops = []
         for xls in xls_data:
             xl = pd.ExcelFile(xls)
             for sheet in sorted(xl.sheet_names):
@@ -39,6 +39,8 @@ class ReturnCrop:
                 df.drop(df.columns[[0,2]],axis=1,inplace=True)
                 df = df.iloc[:21,:]
         #         df[state].shape
+                if state in df.columns:
+                    possible_crops.append(sheet)
                 try:
                     for i,element in enumerate(required_elements):
                         items[y.index(sheet),i,int(xls[8:12])-2004] = df[state].iloc[element]
@@ -64,7 +66,7 @@ class ReturnCrop:
 
         
         all_crops=[]
-        ans = np.zeros((len(y),10))
+        ans = np.zeros((len(y),11))
         cost = np.zeros((len(y)))
         gain = np.zeros((len(y)))
         supp = 1500
@@ -81,5 +83,12 @@ class ReturnCrop:
             if ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area)) > max_num:
                 max_num = ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
                 max_index = i
+<<<<<<< HEAD
                 
         return y[max_index], ans[max_index]
+=======
+        print(max(all_crops),y[max_index])
+        crops_possible = list(set(possible_crops))
+        print(crops_possible)
+        return y[max_index], ans[max_index], crops_possible
+>>>>>>> 1c8fdadee888f3d5ee1464f0ca3f7e44cf783adf

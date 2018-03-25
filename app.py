@@ -11,8 +11,8 @@ def results():
     state = (request.args["state"])
     area = (request.args["area"])
     capital = (request.args["capital"])
-    crop,ans = ReturnCrop.returnCrop(state,area,capital)
-    return render_template("result.html", crop=crop, ans=ans, area=area)
+    crop,ans,crops_possible = ReturnCrop.returnCrop(state,area,capital)
+    return render_template("result.html", crop=crop, ans=ans, area=area, crops_possible = crops_possible)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
