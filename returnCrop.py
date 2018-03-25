@@ -22,7 +22,6 @@ class ReturnCrop:
             sheetnames = sheetnames + xl.sheet_names
         y = set(sheetnames)
         y = list(y)
-        print(y)
 
         items = np.zeros((len(y),10,11))
 
@@ -46,9 +45,6 @@ class ReturnCrop:
                 except:
                     pass
             year.append([int(xls[8:12])])
-
-        print(items)
-        apple,year
 
         for i in range(0,len(items)):
             for j in range(0,len(items[0])):
@@ -85,5 +81,5 @@ class ReturnCrop:
             if ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area)) > max_num:
                 max_num = ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
                 max_index = i
-        print(max(all_crops),y[max_index])
+                
         return y[max_index], ans[max_index]

@@ -28,52 +28,64 @@
       </div>
 
     <div class="container">
-      <h2>
-        The Crop is : {{crop}}
-        <br>
-      </h2>
-      <table class="table table-light">
-          <thead>
-            <tr>
-              <th scope="col">Sr.No.</th>
-              <th scope="col">Parameter</th>
-              <th scope="col">Cost</th>  
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Seeds (in kgs)</td>
-              <td>{{ans[0]}} * {{ans[5]}}</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Manure (in Quintals)</td>
-              <td>{{ans[2]}} * {{ans[3]}}</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Fertilisers (in kg / nutrients)</td>
-              <td>{{ans[1]}} * {{ans[6]}}</td>
-            </tr>
-            <tr>
-              <th scope="row">4</th>
-              <td>Human Labour (ManHrs.)</td>
-              <td>{{ans[3]}} * {{ans[8]}}</td>
-            </tr>
-            <tr></tr>
-              <th scope="row">5</th>
-              <td>Animal Labour (PairHrs.)</td>
-              <td>{{ans[4]}} * {{ans[9]}}</td>
-            </tr>     
-          </tbody>
-        </table>
+      <div class="alert alert-info" role="alert">
+          <p class="alert-heading">Q : Which crop to grow?</p>
+          <h4><strong>A : {{crop}}</strong>- It's the ideal crop to be grown in your area in the year 2018. </h4>
+          <p class="mb-0"></p>
       </div>
-      <div class="container" width="50%">
+      
+      <div class="card">
+          <h5 class="card-header text-white bg-info">Seed Cost Estimate</h5>
+          <div class="card-body">
+            <p class="card-text">Quantity of seeds required for your {{area}} hectare land is <strong>{{ans[0]|round(2, 'floor')}} kg</strong></p>
+            <p class="card-text">Cost per kg of seeds in your state is <strong>Rs. {{ans[5]|round(2, 'floor')}} per kg</strong></p>
+            <p class="card-text">Ideal investment needed for seeds is : <strong>Rs. {{(ans[5] * ans[0])|round(2, 'floor')}}</strong></p>
+          </div>
+      </div>
+      
+      <br>
+
+      <div class="card">
+          <h5 class="card-header text-white bg-info">Soil Conditioning Requirements</h5>
+          <div class="card-body">
+            <h5 class="card-title">Manure</h5>
+            <hr>
+            <p class="card-text">Amount of manure required for your {{area}} hectare land is <strong>{{ans[2]|round(2, 'floor')}} quintals</strong></p>
+            <p class="card-text">Cost per quintal is <strong>Rs. {{ans[3]|round(2, 'floor')}} per quintal</strong></p>
+            <p class="card-text">Ideal investment is : <strong>Rs. {{(ans[2] * ans[3])|round(2, 'floor')}}</strong></p>
+
+            <h5 class="card-title">Fertilisers</h5>
+            <hr>
+            <p class="card-text">Quantity of seeds required for your {{area}} hectare land is <strong>{{ans[1]|round(2, 'floor')}} kg</strong></p>
+            <p class="card-text">Cost per kg of seeds in your state is <strong>Rs. {{ans[6]|round(2, 'floor')}} per kg</strong></p>
+            <p class="card-text">Total investment in seeds is : <strong>Rs. {{(ans[1] * ans[6])|round(2, 'floor')}}</strong></p>
+
+          </div>
+      </div>
+      
+      <br>
+
+      <div class="card">
+          <h5 class="card-header text-white bg-info">Analysis of Manpower</h5>
+          <div class="card-body">
+            <h5 class="card-title">Human Labour</h5>
+            <hr>
+            <p class="card-text">Human Labour required for your {{area}} hectare land is <strong>{{ans[3]|round(2, 'floor')}} ManHours</strong></p>
+            <p class="card-text">Cost in Man Hours is <strong>Rs. {{ans[8]|round(2, 'floor')}} per Man Hour</strong></p>
+            <p class="card-text">Ideal investment is : <strong>Rs. {{(ans[3] * ans[8])|round(2, 'floor')}}</strong></p>
+
+            <h5 class="card-title">Animal Labour</h5>
+            <hr>
+            <p class="card-text">Animal Labour required for your {{area}} hectare land is <strong>{{ans[4]|round(2, 'floor')}} pairHours</strong></p>
+            <p class="card-text">Cost in Pair Hours is<strong>Rs. {{ans[9]|round(2, 'floor')}} per Pair hour</strong></p>
+            <p class="card-text">Total investment is : <strong>Rs. {{(ans[4] * ans[9])|round(2, 'floor')}}</strong></p>
+
+          </div>
+      </div>
+
       <div class="alert alert-dark my-3" role="alert" >
-          <strong> ESTIMATED YIELD: {{ans[10]}} * {{area}}</strong>
-        </div>
-        </div>
+          Estimated yield: <strong> {{ans[10]}} * {{area|float|round(2, 'floor')}} kg</strong>
+      </div>
 
         
         <span class="border border-primary">
@@ -81,7 +93,7 @@
         <div class="row py-4">
             <div class="col-sm-4 my-3">
               <h3>PROFIT IN RUPEES:</h3>
-              <h1 class="display-4 text-info"><i class="fas fa-rupee-sign"></i> 5,000</h1>
+              <h1 class="display-5 text-info"><i class="fas fa-rupee-sign"></i> 5,000</h1>
               
             </div>  
         </div>
