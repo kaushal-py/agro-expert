@@ -24,7 +24,7 @@ class ReturnCrop:
         y = list(y)
         print(y)
 
-        items = np.zeros((len(y),10,11))
+        items = np.zeros((len(y),11,11))
 
         for xls in xls_data:
             xl = pd.ExcelFile(xls)
@@ -68,7 +68,7 @@ class ReturnCrop:
 
         
         all_crops=[]
-        ans = np.zeros((len(y),10))
+        ans = np.zeros((len(y),11))
         cost = np.zeros((len(y)))
         gain = np.zeros((len(y)))
         supp = 1500
