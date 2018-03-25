@@ -83,12 +83,5 @@ class ReturnCrop:
             if ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area)) > max_num:
                 max_num = ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
                 max_index = i
-<<<<<<< HEAD
-                
-        return y[max_index], ans[max_index]
-=======
-        print(max(all_crops),y[max_index])
         crops_possible = list(set(possible_crops))
-        print(crops_possible)
         return y[max_index], ans[max_index], crops_possible
->>>>>>> 1c8fdadee888f3d5ee1464f0ca3f7e44cf783adf
