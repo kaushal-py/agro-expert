@@ -86,10 +86,9 @@
       </div>
 
       <div class="alert alert-dark my-3" role="alert" >
-          Estimated yield: <strong> {{ans[10] * area|float|round(2, 'floor')}} kg</strong>
+          Estimated yield: <strong> {{(ans[10] * area|float)|round(2, 'floor')}} kg</strong>
       </div>
 
-        <span class="border border-primary">
         <div class="container">
         <div class="row py-4">
             <div class="col-sm-4 my-3">
