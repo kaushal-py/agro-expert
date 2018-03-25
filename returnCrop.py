@@ -66,7 +66,7 @@ class ReturnCrop:
                 models[i][j] = linear_model.LinearRegression()
                 models[i][j].fit(year, items[i,j])
 
-        area = 2
+        
         all_crops=[]
         ans = np.zeros((len(y),10))
         cost = np.zeros((len(y)))
@@ -81,9 +81,9 @@ class ReturnCrop:
             for j in range(0,int(len(ans[0])/2)):
                 cost[i]+=ans[i][j]*ans[i][j+5]
         #     print((ans[i][len(items[0])-1]*supp-cost[i])*2)
-            all_crops.append((ans[i][len(items[0])-1]*supp-cost[i])*2)
-            if ((ans[i][len(items[0])-1]*supp-cost[i])*2) > max_num:
-                max_num = ((ans[i][len(items[0])-1]*supp-cost[i])*2)
+            all_crops.append((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
+            if ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area)) > max_num:
+                max_num = ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
                 max_index = i
-        print(max(all_crops),y[i])
-        return y[i]
+        print(max(all_crops),y[max_index])
+        return y[max_index], ans[max_index]
