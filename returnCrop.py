@@ -5,23 +5,24 @@ import numpy as np
 from glob import glob
 import numpy as np
 from sklearn import datasets, linear_model
+from sklearn.svm import SVR
 
-class ReturnCrop:
-    def returnCrop(state,area,capital):
-        xls_data = sorted(glob('Dataset/*.xls'))
+# class ReturnCrop:
+#     def returnCrop(state,area,capital):
+xls_data = sorted(glob('Dataset/*.xls'))
 
-        # state = "Maharashtra"
-        apple = []
-        year = []
-        sheetnames = []
+# state = "Maharashtra"
+apple = []
+year = []
+sheetnames = []
 
         required_elements = [5,6,7,8,9,11,12,13,14,15,19]
 
         for xls in xls_data:
             xl = pd.ExcelFile(xls)
             sheetnames = sheetnames + xl.sheet_names
-        y = set(sheetnames)
         y = list(y)
+        y = set(sheetnames)
 
         items = np.zeros((len(y),11,11))
         possible_crops = []
@@ -48,21 +49,32 @@ class ReturnCrop:
                     pass
             year.append([int(xls[8:12])])
 
-        for i in range(0,len(items)):
-            for j in range(0,len(items[0])):
-                for k in range(0,len(items[0][0])):
-                    if np.isnan(items[i,j,k]):
-                        items[i,j,k] = 0
-        for i in range(0,len(items)):
-            for j in range(0,len(items[0])):
-                for k in range(0,len(items[0][0])):
-                    if np.isnan(items[i,j,k]):
-                        items[i,j,k] = np.mean(items[i][j])
-        models = [[0 for y in range(0,len(items[0]))] for x in range(0,len(items))] 
-        for i in range(0,len(items)):
-            for j in range(0,len(items[0])):
-                models[i][j] = linear_model.LinearRegression()
-                models[i][j].fit(year, items[i,j])
+print(items)
+apple,year
+
+for i in range(0,len(items)):
+    for j in range(0,len(items[0])):
+        for k in range(0,len(items[0][0])):
+            if np.isnan(items[i,j,k]):
+                items[i,j,k] = 0
+for i in range(0,len(items)):
+    for j in range(0,len(items[0])):
+        for k in range(0,len(items[0][0])):
+            if np.isnan(items[i,j,k]):
+                items[i,j,k] = np.mean(items[i][j])
+models = [[0 for y in range(0,len(items[0]))] for x in range(0,len(items))] 
+
+
+for i in range(0,len(items)):
+    for j in range(0,len(items[0])):
+        # models[i][j] = linear_model.LinearRegression()
+        # models[i][j].fit(year, items[i,j])
+        svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
+        models[i][j] = svr_rbf.fit(year, items[i,j])
+# svr_rbf = SVR(kernel='rbf', C=1e3, gamma=0.1)
+# svm = svr_rbf.fit(year, apple)
+# y_rbf = svm.predict(y_trend)
+# plt.plot(y_rbf)
 
         
         all_crops=[]
@@ -83,6 +95,7 @@ class ReturnCrop:
             if ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area)) > max_num:
                 max_num = ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
                 max_index = i
+
         crops_possible = list(set(possible_crops))
         print(ans[max_index][10])
         return y[max_index], ans[max_index], crops_possible
