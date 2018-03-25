@@ -44,34 +44,34 @@
             <tr>
               <th scope="row">1</th>
               <td>Seeds (in kgs)</td>
-              <td>23.3</td>
+              <td>{{ans[0]}} * {{ans[5]}}</td>
             </tr>
             <tr>
               <th scope="row">2</th>
               <td>Manure (in Quintals)</td>
-              <td>12.6</td>
+              <td>{{ans[2]}} * {{ans[3]}}</td>
             </tr>
             <tr>
               <th scope="row">3</th>
               <td>Fertilisers (in kg / nutrients)</td>
-              <td>12.6</td>
+              <td>{{ans[1]}} * {{ans[6]}}</td>
             </tr>
             <tr>
               <th scope="row">4</th>
               <td>Human Labour (ManHrs.)</td>
-              <td>12.4</td>
+              <td>{{ans[3]}} * {{ans[8]}}</td>
             </tr>
             <tr></tr>
               <th scope="row">5</th>
               <td>Animal Labour (PairHrs.)</td>
-              <td>56.4</td>
+              <td>{{ans[4]}} * {{ans[9]}}</td>
             </tr>     
           </tbody>
         </table>
       </div>
       <div class="container" width="50%">
       <div class="alert alert-dark my-3" role="alert" >
-          <strong> ESTIMATED YIELD: </strong>
+          <strong> ESTIMATED YIELD: {{ans[10]}} * {{area}}</strong>
         </div>
         </div>
 
