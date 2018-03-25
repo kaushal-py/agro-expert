@@ -1,13 +1,18 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from returnCrop import ReturnCrop
 app = Flask(__name__)
 
 @app.route("/")
 def input_data():
     return render_template("input.html")
 
-@app.route("/results")
+@app.route("/results", methods = ['POST','GET'])
 def results():
-    return render_template("result.html")
+    state = (request.args["state"])
+    area = (request.args["area"])
+    capital = (request.args["capital"])
+    crop = ReturnCrop.returnCrop(state,area,capital)
+    return render_template("result.html",crop=crop)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=True)
