@@ -82,7 +82,7 @@ def returnCrop(state,area,capital):
     supp = 1500
     for i in range(0,len(items)):
         for j in range(0,len(items[0])):
-            ans[i][j] = abs(models[i][j].predict(2015))
+            ans[i][j] = models[i][j].predict(2017)
     max_num=0
     max_index=0
     for i in range(0,len(items)):
