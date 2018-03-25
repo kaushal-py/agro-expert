@@ -15,7 +15,7 @@ class ReturnCrop:
         year = []
         sheetnames = []
 
-        required_elements = [5,6,7,8,9,11,12,13,14,15,21]
+        required_elements = [5,6,7,8,9,11,12,13,14,15,19]
 
         for xls in xls_data:
             xl = pd.ExcelFile(xls)
@@ -84,4 +84,5 @@ class ReturnCrop:
                 max_num = ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
                 max_index = i
         crops_possible = list(set(possible_crops))
+        print(ans[max_index][10])
         return y[max_index], ans[max_index], crops_possible
