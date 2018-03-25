@@ -15,7 +15,7 @@ def returnCrop(state,area,capital):
     year = []
     sheetnames = []
 
-    required_elements = [5,6,7,8,9,11,12,13,14,15,21]
+    required_elements = [5,6,7,8,9,11,12,13,14,15,19]
 
     for xls in xls_data:
         xl = pd.ExcelFile(xls)
@@ -82,7 +82,7 @@ def returnCrop(state,area,capital):
     supp = 1500
     for i in range(0,len(items)):
         for j in range(0,len(items[0])):
-            ans[i][j] = models[i][j].predict(2017)
+            ans[i][j] = models[i][j].predict(2016)
     max_num=0
     max_index=0
     for i in range(0,len(items)):
