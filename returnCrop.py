@@ -18,35 +18,36 @@ sheetnames = []
 
 required_elements = [5,6,7,8,9,11,12,13,14,15,21]
 
-for xls in xls_data:
-    xl = pd.ExcelFile(xls)
-    sheetnames = sheetnames + xl.sheet_names
-y = set(sheetnames)
-y = list(y)
-print(y)
+        for xls in xls_data:
+            xl = pd.ExcelFile(xls)
+            sheetnames = sheetnames + xl.sheet_names
+        y = list(y)
+        y = set(sheetnames)
 
-items = np.zeros((len(y),11,11))
-
-for xls in xls_data:
-    xl = pd.ExcelFile(xls)
-    for sheet in sorted(xl.sheet_names):
-        if sheet.startswith("Coco"):
-            continue
-        df = xl.parse(sheet, skiprows=3)
-        df.iloc[6,1] = df.iloc[0,1]
-        df.iloc[0,1] = np.nan
-        df.iloc[14,1] = df.iloc[7,1]
-        df.iloc[7,1] = np.nan
-        df = df[df.iloc[:,1].notnull()]
-        df.drop(df.columns[[0,2]],axis=1,inplace=True)
-        df = df.iloc[:21,:]
-#         df[state].shape
-        try:
-            for i,element in enumerate(required_elements):
-                items[y.index(sheet),i,int(xls[8:12])-2004] = df[state].iloc[element]
-        except:
-            pass
-    year.append([int(xls[8:12])])
+        items = np.zeros((len(y),11,11))
+        possible_crops = []
+        for xls in xls_data:
+            xl = pd.ExcelFile(xls)
+            for sheet in sorted(xl.sheet_names):
+                if sheet.startswith("Coco"):
+                    continue
+                df = xl.parse(sheet, skiprows=3)
+                df.iloc[6,1] = df.iloc[0,1]
+                df.iloc[0,1] = np.nan
+                df.iloc[14,1] = df.iloc[7,1]
+                df.iloc[7,1] = np.nan
+                df = df[df.iloc[:,1].notnull()]
+                df.drop(df.columns[[0,2]],axis=1,inplace=True)
+                df = df.iloc[:21,:]
+        #         df[state].shape
+                if state in df.columns:
+                    possible_crops.append(sheet)
+                try:
+                    for i,element in enumerate(required_elements):
+                        items[y.index(sheet),i,int(xls[8:12])-2004] = df[state].iloc[element]
+                except:
+                    pass
+            year.append([int(xls[8:12])])
 
 print(items)
 apple,year
@@ -75,24 +76,28 @@ for i in range(0,len(items)):
 # y_rbf = svm.predict(y_trend)
 # plt.plot(y_rbf)
 
-all_crops=[]
-ans = np.zeros((len(y),11))
-cost = np.zeros((len(y)))
-gain = np.zeros((len(y)))
-supp = pd.read_csv("Dataset/msp.csv")
-for i in range(0,len(items)):
-    for j in range(0,len(items[0])):
-        ans[i][j] = models[i][j].predict(2017)
-max_num=0
-max_index=0
-for i in range(0,len(items)):
-    for j in range(0,int(len(ans[0])/2)):
-        cost[i]+=ans[i][j]*ans[i][j+5]
-    # print((ans[i][len(items[0])-1]*supp-cost[i])*2)
-    print(y[i])
-    all_crops.append((int(ans[i][len(items[0])-1])*int((supp.query('Crop=='+y[i]+'')['Msp']).item())-int(cost[i]))*int(area))
-    if ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area)) > max_num:
-        max_num = ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
-        max_index = i
-print(max(all_crops),y[max_index])
-# return y[max_index], ans[max_index]
+        
+        all_crops=[]
+        ans = np.zeros((len(y),11))
+        cost = np.zeros((len(y)))
+        gain = np.zeros((len(y)))
+        supp = 1500
+        for i in range(0,len(items)):
+            for j in range(0,len(items[0])):
+                ans[i][j] = models[i][j].predict(2017)
+        max_num=0
+        max_index=0
+        for i in range(0,len(items)):
+            for j in range(0,int(len(ans[0])/2)):
+                cost[i]+=ans[i][j]*ans[i][j+5]
+        #     print((ans[i][len(items[0])-1]*supp-cost[i])*2)
+            all_crops.append((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
+            if ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area)) > max_num:
+                max_num = ((int(ans[i][len(items[0])-1])*int(supp)-int(cost[i]))*int(area))
+                max_index = i
+                
+        return y[max_index], ans[max_index]
+        print(max(all_crops),y[max_index])
+        crops_possible = list(set(possible_crops))
+        print(crops_possible)
+        return y[max_index], ans[max_index], crops_possible
